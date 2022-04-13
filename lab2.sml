@@ -17,8 +17,6 @@ fun is_older (date1: int*int*int, date2: int*int*int): bool =
                     else false;             
             
 
-(* is_older((2020, 6, 20), (2020, 6, 23)); *)
-
 fun is_older_test() =
   if is_older((2020, 6, 20), (2021, 6, 23)) <> true
   then raise Fail "Test of is_older passed failed at 1 case."
@@ -50,7 +48,6 @@ fun number_in_month (dates: (int*int*int) list, month: int): int =
         else 
             number_in_month (tl dates, month);
 
-(* number_in_month([(2020, 4, 20), (2020, 5, 23), (2020, 5, 23), (2020, 3, 23), (2020, 5, 23)], 5); *)
 
 fun number_in_month_test() =
   if number_in_month([(2020, 4, 20), (2020, 5, 23), (2020, 5, 23), (2020, 3, 23), (2020, 5, 23)], 5) <> 3
@@ -78,7 +75,6 @@ fun number_in_months (dates: (int*int*int) list, months: int list): int =
         else 
             number_in_months (tl dates, months);
 
-(* number_in_months([(2020, 4, 20), (2020, 5, 23), (2020, 5, 23), (2020, 3, 23), (2020, 3, 23)], [5, 3]); *)
 
 fun number_in_months_test() =
   if number_in_months([(2020, 4, 20), (2020, 5, 23), (2020, 5, 23), (2020, 3, 23), (2020, 3, 23)], [5, 3]) <> 4
@@ -98,7 +94,6 @@ fun dates_in_month (dates: (int*int*int) list, month: int): (int*int*int) list =
         else 
             dates_in_month(tl dates, month);
 
-(* dates_in_month([(2020, 4, 20), (2020, 5, 21), (2020, 5, 22), (2020, 3, 23), (2020, 5, 24)], 5); *)
 
 fun dates_in_month_test() =
   if dates_in_month([(2020, 4, 20), (2020, 5, 21), (2020, 5, 22), (2020, 3, 23), (2020, 5, 24)], 5) <> [(2020,5,21),(2020,5,22),(2020,5,24)]
@@ -110,14 +105,6 @@ fun dates_in_month_test() =
 dates_in_month_test();
 
 (*5*)
-(* fun date_in_months (date: int*int*int, months: int list): bool = 
-    if null months then false
-    else 
-        if #2 date = hd months then
-            true
-        else 
-            date_in_months(date, tl months); *)
-
 fun dates_in_months (dates: (int*int*int) list, months: int list): (int*int*int) list = 
     if null dates then []
     else 
@@ -126,7 +113,6 @@ fun dates_in_months (dates: (int*int*int) list, months: int list): (int*int*int)
         else 
             dates_in_months(tl dates, months);
 
-(* dates_in_months([(2020, 4, 20), (2020, 5, 21), (2020, 5, 22), (2020, 3, 23), (2020, 5, 24)], [5, 3]); *)
 
 fun dates_in_months_test() =
   if dates_in_months([(2020, 4, 20), (2020, 5, 21), (2020, 5, 22), (2020, 3, 23), (2020, 5, 24)], [5, 3]) <> [(2020,5,21),(2020,5,22),(2020,3,23),(2020,5,24)]
@@ -147,7 +133,6 @@ fun get_nth(strings: string list, n: int) : string =
         else 
             get_nth(tl strings, n - 1);
 
-(* get_nth(["qqqqq", "wwwwwwww", "eeeeeee", "rrrrrrrr", "tttttttt"], 3); *)
 
 fun get_nth_test() =
   if get_nth(["qqqqq", "wwwwwwww", "eeeeeee", "rrrrrrrr", "tttttttt"], 3) <> "eeeeeee"
@@ -160,15 +145,6 @@ get_nth_test();
 
 
 (*7*)
-(* fun get_nth(strings: string list, n: int) : string = 
-    if null strings then
-        ""
-    else
-        if n - 1 = 0 then
-            hd strings
-        else 
-            get_nth(tl strings, n - 1); *)
-
 fun date_to_string(date: int*int*int): string = 
     let val months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     in
@@ -193,7 +169,6 @@ fun number_before_reaching_sum (sum: int, ints: int list): int =
     else
         number_before_reaching_sum(sum - (hd ints), tl ints) + 1;
 
-(* number_before_reaching_sum(96, [30, 30, 30, 30, 30, 30, 30]); *)
 
 fun number_before_reaching_sum_test() =
   if number_before_reaching_sum(43, [30, 30, 30, 30, 30, 30, 30]) <> 1
@@ -209,19 +184,12 @@ fun number_before_reaching_sum_test() =
 number_before_reaching_sum_test();
 
 (*9*)
-(* fun number_before_reaching_sum (sum: int, ints: int list): int = 
-    if sum <= 0 then
-        ~1
-    else
-        number_before_reaching_sum(sum - (hd ints), tl ints) + 1; *)
-
 fun what_month (day: int): int = 
     let val months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     in
         number_before_reaching_sum(day, months) + 1
     end;
 
-(* what_month(256); *)
 
 fun what_month_test() =
   if what_month(256) <> 9
@@ -233,18 +201,6 @@ fun what_month_test() =
 what_month_test();
 
 (*10*)
-(* fun number_before_reaching_sum (sum: int, ints: int list): int = 
-    if sum <= 0 then
-        ~1
-    else
-        number_before_reaching_sum(sum - (hd ints), tl ints) + 1; *)
-
-(* fun what_month (day: int): int = 
-    let val months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    in
-        number_before_reaching_sum(day, months) + 1
-    end; *)
-
 fun range(a: int, b: int): int list = 
     if a <= b + 1 then
         a :: range(a + 1, b)
@@ -257,7 +213,6 @@ fun month_range(day1: int, day2: int): int list =
     else
         range(what_month(day1), what_month(day2));
 
-(* month_range(45, 256); *)
 
 fun month_range_test() =
   if month_range(45, 256) <> [2,3,4,5,6,7,8,9,10]
@@ -269,24 +224,6 @@ fun month_range_test() =
 month_range_test();
 
 (*11*)
-(* fun is_older (date1: int*int*int, date2: int*int*int): bool = 
-    if #1 date1 < #1 date2 then 
-        true 
-    else 
-        if #1 date1 > #1 date2 then 
-            false
-        else 
-            if #2 date1 < #2 date2 then 
-                true
-            else 
-                if #2 date1 > #2 date2 then 
-                    false
-                else 
-                    if #3 date1 < #3 date2 then 
-                        true
-                    else false;   *)
-                    
-
 fun oldest (dates: (int*int*int) list) = 
     if null dates then
         NONE
@@ -307,7 +244,6 @@ fun oldest (dates: (int*int*int) list) =
             SOME (get_oldest(dates))
         end;
 
-(* oldest([(2000, 4, 20), (2020, 5, 21), (2020, 5, 22), (1999, 3, 23), (2020, 5, 24)]); *)
 
 fun oldest_test() =
   if oldest([(2000, 4, 20), (2020, 5, 21), (2020, 5, 22), (1999, 3, 23), (2020, 5, 24)]) <> SOME (1999,3,23)
